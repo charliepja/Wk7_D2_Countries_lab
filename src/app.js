@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     el: "#app",
     data: {
       countries: [],
-      totalPopulation: 0
+      totalPopulation: 0,
+			countryFilter: null
     },
 		mounted(){
 			this.fetchCountries();
@@ -15,15 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return this.countries.reduce((total, country) => {
           return total + country.population;
         }, 0);
-      },
-
+      }
     },
     methods: {
 			fetchCountries: function() {
         const request = fetch("https://restcountries.eu/rest/v2/all")
         .then(response => response.json())
         .then(data => this.countries = data);
-      }
-    },
+      },
+			filterCountries: function() {
+				return this.countries.indexOf(countryFilter);
+			}
+    }
   })
 })
