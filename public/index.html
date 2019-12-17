@@ -11,6 +11,12 @@
   <div id="app">
     <h1>Total Population</h1>
     <p>{{totalPops}}</p>
+		<form v-on:submit.prevent="">
+			<h3>Filter By Country:</h3>
+				<select id="filter-country">
+						<option v-for="country in countries" value="country.name">{{ country.name }}</option>
+				</select>
+		</form>
   </div>
 
 </body>
